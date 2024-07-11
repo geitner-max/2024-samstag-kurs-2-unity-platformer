@@ -15,19 +15,21 @@ public class FeetControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(GetComponent<Transform>().position.y);
+
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other);
-        if (other.gameObject.layer == platforms) grounded = true;
+
+        if (platforms == (1 << other.gameObject.layer))
+        {
+            grounded = true;
+        }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
-         Debug.Log(other);
-        if (other.gameObject.layer == platforms) grounded = false;
+        if (platforms == (1 << other.gameObject.layer)) grounded = false;
     }
 
     public bool IsGrounded() { return grounded; }
