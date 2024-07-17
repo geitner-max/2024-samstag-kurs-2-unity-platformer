@@ -18,16 +18,16 @@ public class FeetControl : MonoBehaviour
         Debug.Log(GetComponent<Transform>().position.y);
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other);
-        if (other.gameObject.layer == platforms) grounded = true;
+        if ((1<<other.gameObject.layer) == platforms) grounded = true;
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit2D(Collider2D other)
     {
          Debug.Log(other);
-        if (other.gameObject.layer == platforms) grounded = false;
+        if ((1<<other.gameObject.layer) == platforms) grounded = false;
     }
 
     public bool IsGrounded() { return grounded; }
